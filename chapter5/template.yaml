@@ -1,0 +1,134 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  iot_dev_starting_book_app
+
+  Sample SAM Template for iot_dev_starting_book_app
+
+Globals:
+  Function:
+    Timeout: 3
+
+Resources:
+  NotifyTemperatureFunction:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      CodeUri: notify_temperature/
+      Handler: app.lambda_handler
+      Runtime: ruby2.7
+      Events:
+        NotifyTemperature:
+          Type: IoTRule
+          Properties:
+            Sql: SELECT value FROM 'temperature/#' WHERE value > 30
+  IoTPolicy:
+    Type: AWS::IoT::Policy
+    Properties:
+      PolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Action: iot:*
+            Resource: '*'
+      PolicyName: IoTDevStarging
+  
+  FetchTemperatureFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: fetch_temperature/
+      Handler: app.lambda_handler
+      Runtime: ruby2.7
+      Policies:
+      - AmazonDynamoDBReadOnlyAccess
+      Events:
+        FetchTemperature:
+          Type: Api
+          Properties:
+            Path: /temperature/{id}
+            Method: get
+
+  DynamoDBTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        -
+          AttributeName: id
+          AttributeType: S
+        -
+          AttributeName: timestamp
+          AttributeType: N
+      KeySchema:
+        -
+          AttributeName: id
+          KeyType: HASH
+        -
+          AttributeName: timestamp
+          KeyType: RANGE
+      TableName: Temperature
+  
+  TopicRuleDynamoDBv2:
+    Type: AWS::IoT::TopicRule
+    Properties:
+      RuleName: StorageTemperature
+      TopicRulePayload:
+        Sql: SELECT topic(2) AS id, timestamp() AS timestamp, value FROM 'temperature/#'
+        RuleDisabled: false
+        Actions:
+          - DynamoDBv2:
+              PutItem:
+                TableName: !Ref DynamoDBTable
+              RoleArn: !GetAtt IAMRole.Arn
+
+  IAMRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: IAMRole
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - iot.amazonaws.com
+            Action:
+              - 'sts:AssumeRole'
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess
+  
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: PublicRead
+      WebsiteConfiguration:
+        IndexDocument: index.html
+        ErrorDocument: error.html
+
+  BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      PolicyDocument:
+        Id: MyPolicy
+        Version: 2012-10-17
+        Statement:
+          - Sid: PublicReadForGetBucketObjects
+            Effect: Allow
+            Principal: '*'
+            Action: 's3:GetObject'
+            Resource: !Join 
+              - ''
+              - - 'arn:aws:s3:::'
+                - !Ref S3Bucket
+                - /*
+      Bucket: !Ref S3Bucket
+
+Outputs:
+  ApiURL:
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/temperature/0A-001"
+    Description: "API Gateway endpoint URL for Prod stage for Fetch Temperature function"
+  WebSiteURL:
+    Value: !GetAtt 
+      - S3Bucket
+      - WebsiteURL
+    Description: URL for website hosted on S3
+

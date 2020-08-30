@@ -1,0 +1,246 @@
+
+# Created by https://www.gitignore.io/api/osx,linux,python,windows,pycharm,visualstudiocode
+
+### Linux ###
+chapter*/*~
+
+# temporary files which can be created if a process still has a handle open of a deleted file
+chapter*/.fuse_hidden*
+
+# KDE directory preferences
+chapter*/.directory
+
+# Linux trash folder which might appear on any partition or disk
+chapter*/.Trash-*
+
+# .nfs files are created when an open file is removed but is still being accessed
+chapter*/.nfs*
+
+### OSX ###
+chapter*/*.DS_Store
+chapter*/.AppleDouble
+chapter*/.LSOverride
+
+# Icon must end with two \r
+chapter*/Icon
+
+# Thumbnails
+chapter*/._*
+
+# Files that might appear in the root of a volume
+chapter*/.DocumentRevisions-V100
+chapter*/.fseventsd
+chapter*/.Spotlight-V100
+chapter*/.TemporaryItems
+chapter*/.Trashes
+chapter*/.VolumeIcon.icns
+chapter*/.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+chapter*/.AppleDB
+chapter*/.AppleDesktop
+chapter*/Network Trash Folder
+chapter*/Temporary Items
+chapter*/.apdisk
+
+### PyCharm ###
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and Webstorm
+# Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
+
+# User-specific stuff:
+chapter*/.idea/**/workspace.xml
+chapter*/.idea/**/tasks.xml
+chapter*/.idea/dictionaries
+
+# Sensitive or high-churn files:
+chapter*/.idea/**/dataSources/
+chapter*/.idea/**/dataSources.ids
+chapter*/.idea/**/dataSources.xml
+chapter*/.idea/**/dataSources.local.xml
+chapter*/.idea/**/sqlDataSources.xml
+chapter*/.idea/**/dynamic.xml
+chapter*/.idea/**/uiDesigner.xml
+
+# Gradle:
+chapter*/.idea/**/gradle.xml
+chapter*/.idea/**/libraries
+
+# CMake
+chapter*/cmake-build-debug/
+
+# Mongo Explorer plugin:
+chapter*/.idea/**/mongoSettings.xml
+
+## File-based project format:
+chapter*/*.iws
+
+## Plugin-specific files:
+
+# IntelliJ
+chapter*/out/
+
+# mpeltonen/sbt-idea plugin
+chapter*/.idea_modules/
+
+# JIRA plugin
+chapter*/atlassian-ide-plugin.xml
+
+# Cursive Clojure plugin
+chapter*/.idea/replstate.xml
+
+# Ruby plugin and RubyMine
+chapter*/.rakeTasks
+
+# Crashlytics plugin (for Android Studio and IntelliJ)
+chapter*/com_crashlytics_export_strings.xml
+chapter*/crashlytics.properties
+chapter*/crashlytics-build.properties
+chapter*/fabric.properties
+
+### PyCharm Patch ###
+# Comment Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-215987721
+
+# *.iml
+# modules.xml
+# .idea/misc.xml
+# *.ipr
+
+# Sonarlint plugin
+chapter*/.idea/sonarlint
+
+### Python ###
+# Byte-compiled / optimized / DLL files
+chapter*/__pycache__/
+chapter*/*.py[cod]
+chapter*/*$py.class
+
+# C extensions
+chapter*/*.so
+
+# Distribution / packaging
+chapter*/.Python
+chapter*/build/
+chapter*/develop-eggs/
+chapter*/dist/
+chapter*/downloads/
+chapter*/eggs/
+chapter*/.eggs/
+chapter*/lib/
+chapter*/lib64/
+chapter*/parts/
+chapter*/sdist/
+chapter*/var/
+chapter*/wheels/
+chapter*/*.egg-info/
+chapter*/.installed.cfg
+chapter*/*.egg
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+chapter*/*.manifest
+chapter*/*.spec
+
+# Installer logs
+chapter*/pip-log.txt
+chapter*/pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+chapter*/htmlcov/
+chapter*/.tox/
+chapter*/.coverage
+chapter*/.coverage.*
+chapter*/.cache
+chapter*/.pytest_cache/
+chapter*/nosetests.xml
+chapter*/coverage.xml
+chapter*/*.cover
+chapter*/.hypothesis/
+
+# Translations
+chapter*/*.mo
+chapter*/*.pot
+
+# Flask stuff:
+chapter*/instance/
+chapter*/.webassets-cache
+
+# Scrapy stuff:
+chapter*/.scrapy
+
+# Sphinx documentation
+chapter*/docs/_build/
+
+# PyBuilder
+chapter*/target/
+
+# Jupyter Notebook
+chapter*/.ipynb_checkpoints
+
+# pyenv
+chapter*/.python-version
+
+# celery beat schedule file
+chapter*/celerybeat-schedule.*
+
+# SageMath parsed files
+chapter*/*.sage.py
+
+# Environments
+chapter*/.env
+chapter*/.venv
+chapter*/env/
+chapter*/venv/
+chapter*/ENV/
+chapter*/env.bak/
+chapter*/venv.bak/
+
+# Spyder project settings
+chapter*/.spyderproject
+chapter*/.spyproject
+
+# Rope project settings
+chapter*/.ropeproject
+
+# mkdocs documentation
+chapter*/site
+
+# mypy
+chapter*/.mypy_cache/
+
+### VisualStudioCode ###
+chapter*/.vscode/*
+chapter*/!.vscode/settings.json
+chapter*/!.vscode/tasks.json
+chapter*/!.vscode/launch.json
+chapter*/!.vscode/extensions.json
+chapter*/.history
+
+### Windows ###
+# Windows thumbnail cache files
+chapter*/Thumbs.db
+chapter*/ehthumbs.db
+chapter*/ehthumbs_vista.db
+
+# Folder config file
+chapter*/Desktop.ini
+
+# Recycle Bin used on file shares
+chapter*/$RECYCLE.BIN/
+
+# Windows Installer files
+chapter*/*.cab
+chapter*/*.msi
+chapter*/*.msm
+chapter*/*.msp
+
+# Windows shortcuts
+chapter*/*.lnk
+
+# Build folder
+
+chapter*/*/build/*
+
+# End of https://www.gitignore.io/api/osx,linux,python,windows,pycharm,visualstudiocode
+
+.git_old

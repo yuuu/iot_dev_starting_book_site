@@ -1,0 +1,33 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  iot_dev_starting_book_app
+
+  Sample SAM Template for iot_dev_starting_book_app
+
+Globals:
+  Function:
+    Timeout: 3
+
+Resources:
+  NotifyTemperatureFunction:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      CodeUri: notify_temperature/
+      Handler: app.lambda_handler
+      Runtime: ruby2.7
+      Events:
+        NotifyTemperature:
+          Type: IoTRule
+          Properties:
+            Sql: SELECT value FROM 'temperature/#' WHERE value > 30
+  IoTPolicy:
+    Type: AWS::IoT::Policy
+    Properties:
+      PolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Action: iot:*
+            Resource: '*'
+      PolicyName: IoTDevStarging
