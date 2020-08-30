@@ -18,8 +18,7 @@ def lambda_handler(event:, context:)
     return response 500, { message: error.message }
   end
 
-  body = result.items.map{|r| { timestamp: r['timestamp'].to_i,  value: r['value'].to_f }}
-  response 200, body
+  response 200, result
 end
 
 def response(status, result)
@@ -30,6 +29,6 @@ def response(status, result)
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET'
     },
-    body: body.to_json
+    body: result.items.map{|r| { timestamp: r['timestamp'].to_i,  value: r['value'].to_f }}.to_json
   }
 end
