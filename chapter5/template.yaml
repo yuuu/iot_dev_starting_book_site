@@ -30,7 +30,7 @@ Resources:
           - Effect: Allow
             Action: iot:*
             Resource: '*'
-      PolicyName: IoTDevStarging
+      PolicyName: IoTDevStarting
   
   FetchTemperatureFunction:
     Type: AWS::Serverless::Function
