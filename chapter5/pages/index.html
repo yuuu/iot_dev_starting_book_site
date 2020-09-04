@@ -6,10 +6,10 @@
     <meta name="robots" content="nofollow" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/open-fonts@1.1.1/fonts/inter.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
-  　<title>計測温度グラフ | AWSとM5StickCで作るIoT開発入門</title>
+  　<title>計測気温グラフ | AWSとM5StickCで作るIoT開発入門</title>
   </head>
   <body>
-    <h1>計測温度</h1>
+    <h1>計測気温</h1>
     <canvas id="line-chart"></canvas>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
@@ -21,7 +21,7 @@
         type: 'line',
         data: {
           labels: data.map(d => new Date(d.timestamp).toLocaleString('ja-JP')),
-          datasets: [ { label: '温度(℃）', data: data.map(d => d.value), borderColor: '#F00'}, ],
+          datasets: [ { label: '気温(℃）', data: data.map(d => d.value), borderColor: '#F00'}, ],
         },
         options: {
           backgroundColor: '#FFF'

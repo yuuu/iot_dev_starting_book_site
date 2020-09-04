@@ -36,7 +36,7 @@ void setupMqtt() {
   }
 }
 
-// 温度を送信する
+// 気温を送信する
 void publishTemperature(float tmp) {
   char message[128] = {0};
   sprintf(message, "{\"value\": %f}", tmp);
