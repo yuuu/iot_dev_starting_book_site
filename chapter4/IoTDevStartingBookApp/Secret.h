@@ -6,14 +6,17 @@
 #define CLOUD_TOPIC "temperature/0A-001"
 #define CLIENT_ID "1"
 
-#define ROOT_CA "-----BEGIN CERTIFICATE-----\n"\
-"<xxxxxxxxxx-certificate.pem.crt>\n"\
-"-----END CERTIFICATE-----"
+#define ROOT_CA                                                                \
+  "-----BEGIN CERTIFICATE-----\n"                                              \
+  "<AmazonRootCA1.pem>\n"                                                      \
+  "-----END CERTIFICATE-----"
 
-#define CERTIFICATE "-----BEGIN CERTIFICATE-----\n"\
-"<xxxxxxxxxx-private.pem.key>\n"\
-"-----END CERTIFICATE-----\n"\
+#define CERTIFICATE                                                            \
+  "-----BEGIN CERTIFICATE-----\n"                                              \
+  "<xxxxxxxxxx-certificate.pem.crt>\n"                                         \
+  "-----END CERTIFICATE-----\n"
 
-#define PRIVATE_KEY "-----BEGIN RSA PRIVATE KEY-----\n"\
-"<AmazonRootCA1.pem>\n"\
-"-----END RSA PRIVATE KEY-----\n"\
+#define PRIVATE_KEY                                                            \
+  "-----BEGIN RSA PRIVATE KEY-----\n"                                          \
+  "<xxxxxxxxxx-private.pem.key>\n"                                             \
+  "-----END RSA PRIVATE KEY-----\n"
